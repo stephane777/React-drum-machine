@@ -18,7 +18,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
                 },
                 { 
                     test: /\.css$/,
-                     use: 'css-loader' 
+                    use: ['style-loader','css-loader']
                 }
             ]
         },

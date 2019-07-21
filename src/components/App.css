@@ -1,6 +1,21 @@
+/* .App {
+    text-align: center;
+} */
+
 #drum-machine {
-    margin: 0 auto;
-    width: 500px;
+    
+    /* width: 500px; */
+    /* height: 400px; */
+    /* border: 2px solid #000; */ 
+    display: flex;
+    height: 100%;
+    /* /* align-items: center; */
+    justify-content: center; 
+}
+#display {
+    /* max-width: 50%; */
+    align-self: center;
+    min-width: 500px;
     height: 400px;
-    border: 1px solid lightblue;
+    border: 2px solid #000; 
 }

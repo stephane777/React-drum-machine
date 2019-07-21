@@ -15,6 +15,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
                     use: {
                         loader: 'babel-loader'
                     } 
+                },
+                { 
+                    test: /\.css$/,
+                     use: 'css-loader' 
                 }
             ]
         },

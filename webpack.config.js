@@ -19,6 +19,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
                 { 
                     test: /\.css$/,
                     use: ['style-loader','css-loader']
+                },
+                {
+                    test: /\.wav$|\.aif$/,
+                    loader: 'file-loader'
                 }
             ]
         },

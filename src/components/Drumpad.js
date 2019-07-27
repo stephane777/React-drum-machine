@@ -1,11 +1,27 @@
 import React from 'react'
+import Aux from './Aux'
 import './Drumpad.css'
-import Sound  from '../audio/fx-spindown.wav'
 
+
+const handleclick = ()=>{
+    const myAudio = document.getElementById('myAudio')
+    myAudio.play()
+}
 const Drumpad = (props)=> {
 
     return (
-        <button className="drum-pad" id='pad'>{props.value}</button>
+        <Aux>
+             <button 
+                onClick={()=>handleclick()} 
+                className="drum-pad" 
+                id={props.uniqueId}>
+                {props.value}
+                </button>
+            
+             <audio id={props.value}>
+               <source src={props.sound} type="audio/wav"/>
+             </audio>
+        </Aux>
     )
 }
 

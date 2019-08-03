@@ -3,24 +3,22 @@ import Aux from './Aux'
 import './Drumpad.css'
 
 
-const handleclick = ()=>{
-    const myAudio = document.getElementById('myAudio')
-    myAudio.play()
-}
-const Drumpad = (props)=> {
+const Drumpad = (props) => {
 
     return (
         <Aux>
-             <button 
-                onClick={()=>handleclick()} 
-                className="drum-pad" 
+            <button
+                onClick={(e) => props.handleTrigger(e, props.value, props.uniqueId)}
+                className="drum-pad"
                 id={props.uniqueId}>
                 {props.value}
-                </button>
-            
-             <audio id={props.value}>
-               <source src={props.sound} type="audio/wav"/>
-             </audio>
+                <audio id={props.value} 
+                        className='clip'
+                     src={props.sound} type="audio/wav">
+                </audio>
+            </button>
+
+
         </Aux>
     )
 }

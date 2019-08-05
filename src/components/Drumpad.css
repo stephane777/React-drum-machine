@@ -1,9 +1,11 @@
 .drum-pad {
     width: 30%;
     text-align: center;
-    margin: 10px 0;
     height: 75px;
     vertical-align: middle;
-    border: 1px solid #ccc;
+    border: 2px solid rgb(75, 75, 75);
+    border-radius: 10px;
     outline: none;
+    background: rgb(182, 182, 182);
+    font-weight: bold;
 }

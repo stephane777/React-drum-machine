@@ -1,4 +1,5 @@
 import React from 'react'
+import './currentSong.css'
 
 const CurrentSong = (props) => {
     const style = {
@@ -6,8 +7,7 @@ const CurrentSong = (props) => {
         fontWeight: 'bold',
     }
     return (
-        <div style={style}>
-            <span></span>
+        <div id="currentSong" style={style}>
             <span id='display'>
                 {props.currentSong}
             </span>

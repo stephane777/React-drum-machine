@@ -1,74 +1,94 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css'
 import Drumpads from './Drumpads'
+import Power from './Power'
+import CurrentSong from './CurrentSong'
+import SwitchBulk from './SwitchBulk'
 
 const context1 = require.context('../sounds/bulk1', false, /\.wav$/)
 const context2 = require.context('../sounds/bulk2', false, /\.wav$/)
 const context3 = require.context('../sounds/bulk3', false, /\.wav$/)
 const bulk1 = context1.keys().map(file => {
     // console.log(file);
-    return require(`../sounds/bulk1/${file.replace(/\.\//,'')}`);
+    return require(`../sounds/bulk1/${file.replace(/\.\//, '')}`);
 });
 const bulk2 = context2.keys().map(file => {
     // console.log(file);
-    return require(`../sounds/bulk2/${file.replace(/\.\//,'')}`);
+    return require(`../sounds/bulk2/${file.replace(/\.\//, '')}`);
 });
-const bulk3 = context3.keys().map(file => {
-    // console.log(file);
-    return require(`../sounds/bulk3/${file.replace(/\.\//,'')}`);
-});
-const bulkCollection = {
+
+const bulkCollection = [
     bulk1,
-    bulk2,
-    bulk3
-}
+    bulk2
+
+]
 
 class App extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
-            currentBulk: bulkCollection.bulk1,
-            currentSong: '',
-            isOnOff: true  
+            isSwitchBankChecked: false,
+            display: 'Bank1',
+            isOnOff: true
         }
         this.handleCurrentSong = this.handleCurrentSong.bind(this)
         this.handleTogglePower = this.handleTogglePower.bind(this)
-        
+        this.handleSwitchBank = this.handleSwitchBank.bind(this)
     }
-    handleCurrentSong(currentSong){
-        this.setState((currentState)=>{
-            if (currentState.currentSong !== currentSong) {
+    handleCurrentSong(currentSong) {
+        this.setState((currentState) => {
+            if (currentState.display !== display) {
                 return {
-                    currentSong
+                    display: currentSong
                 }
             }
-            
+
         })
     }
-    handleTogglePower(){
-        console.log('handleTogglePower')
-        this.setState( currentState =>{
+    handleTogglePower() {
+        this.setState(currentState => {
             return {
                 isOnOff: !currentState.isOnOff,
             }
         })
     }
-    render(){
-            return (
-                <div id='drum-machine'>
-                   <div id='main-container'>
-                        <Drumpads 
-                            currentBulk={this.state.currentBulk}
-                            currentSong={this.state.currentSong}
-                            isOnOff={this.state.isOnOff}
-                            handleCurrentSong={this.handleCurrentSong}
-                            handleTogglePower={this.handleTogglePower}
+    handleSwitchBank(){
+        if (!this.state.isOnOff) return
+        this.setState(currentState=>{
+            
+            return {
+                isSwitchBankChecked: !currentState.isSwitchBankChecked,
+                display: currentState.display ==="Bank1" ? "Bank2" :"Bank1",
+            }
+        })
+    }
+    render() {
+        return (
+            <div id='drum-machine'>
+                <div id='main-container'>
+                    <Drumpads
+                        currentBulk={bulkCollection[+this.state.isSwitchBankChecked]}
+                        currentSong={this.state.display}
+                        isOnOff={this.state.isOnOff}
+                        handleCurrentSong={this.handleCurrentSong}
+                        handleTogglePower={this.handleTogglePower}
+                    />
+                    <div id='controller'>
+                        <Power handleTogglePower={this.handleTogglePower}
+                               isOnOff={this.state.isOnOff}
                         />
-                   </div>
+                        <CurrentSong
+                            currentSong={this.state.display}
+                        />
+                        <SwitchBulk handleSwitchBank={this.handleSwitchBank}
+                                    isChecked={this.state.isSwitchBankChecked}/>
+
+                    </div>
                 </div>
-            )
-        
-        
+            </div>
+        )
+
+
     }
 }
 export default App

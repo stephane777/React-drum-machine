@@ -1,6 +1,10 @@
 #power {
     text-align: center;
 }
+#power label {
+    font-family: 'Lato',sans-serif;
+    font-weight: bold;
+}
 /* .center {
     position: absolute;
     top: 50%; 

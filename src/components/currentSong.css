@@ -1,0 +1,10 @@
+#display {
+    font-family :'Lato', sans-serif; 
+    font-weight: bold;
+     text-transform: uppercase;
+}
+#currentSong {
+    background: #ccc;
+    height: 40px;
+    padding-top: 18px;
+}

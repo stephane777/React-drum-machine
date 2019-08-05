@@ -5,7 +5,7 @@ import CurrentSong from './CurrentSong';
 import Power from './Power'
 import SwitchBulk from './SwitchBulk';
 
-const context = require.context('../sounds/bulk1', false, /\.wav$/)
+// const context = require.context('../sounds/bulk1', false, /\.wav$/)
 // const bulk1 = context.keys().map(file => {
 //     // console.log(file);
 //     return require(`../sounds/bulk1/${file.replace(/\.\//,'')}`);
@@ -74,7 +74,7 @@ class Drumpads extends Component {
         return (
             <div id='container'>
                 <div id="pads">{pads}</div>
-                <div id='controller'>
+                {/* <div id='controller'>
                     <Power handleTogglePower={this.props.handleTogglePower}
                            isOnOff={this.props.isOnOff}
                     />
@@ -83,7 +83,7 @@ class Drumpads extends Component {
                     />
                     <SwitchBulk />
                     
-                </div>
+                </div> */}
             </div>
             
         )

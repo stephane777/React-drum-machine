@@ -1,10 +1,10 @@
 #switchBulk {
     text-align: center;
 }
-/* .center {
-    position: absolute;
-    top: 50%; 
-} */
+#switchBulk label {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+}
 input[type="checkbox"] {
     position: relative;
     height:20px;

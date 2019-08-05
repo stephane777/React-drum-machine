@@ -9,8 +9,8 @@ const SwitchBulk = (props)=>{
             <div>
                 <input type="checkbox"
                         name="switchBulk"
-                        checked={props.isOnOff}
-                        onChange={props.handleTogglePower}>
+                        checked={props.isChecked}
+                        onChange={props.handleSwitchBank}>
                         </input>
             </div>
         </div>
@@ -18,3 +18,4 @@ const SwitchBulk = (props)=>{
     )
 }
 export default SwitchBulk
+

@@ -11,11 +11,18 @@
     height: 100%;
     /* /* align-items: center; */
     justify-content: center; 
+    background: rgb(255, 212, 118);
 }
 #main-container {
-    /* max-width: 50%; */
     align-self: center;
     width: 700px;
     height: 300px;
-    border: 2px solid #000; 
+    border: 5px solid rgb(161, 91, 0); 
+    background: #ddd;
+    display: flex;
+    justify-content: space-evenly;
+}
+#container {
+    display:flex;
+
 }

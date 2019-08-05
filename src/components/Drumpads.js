@@ -43,13 +43,25 @@ class Drumpads extends Component {
     
 
     keyDownEvent(obj){
-            document.addEventListener('keydown', event => {
-                const char = String.fromCharCode(event.keyCode)
-                const indexCurrentSong = obj.findIndex(el=> Object.keys(el)[0] === char)
-                if (this.keys.indexOf(char) > -1){
-                    this.handleTrigger(event, char,obj[indexCurrentSong][char])
-                }
-            })
+                document.addEventListener('keydown', event => {
+                    const char = String.fromCharCode(event.keyCode)
+                    // const indexCurrentSong = obj.findIndex(el=> Object.keys(el)[0] === char)
+                    if (this.keys.indexOf(char) > -1){
+                        // this.handleTrigger(event, char,obj[indexCurrentSong][char])
+                        const pads = document.getElementById('pads')
+                        pads.childNodes.forEach(child =>{
+                            if (child.innerText === char){
+                                child.click()
+                                child.classList.toggle('active')
+                                setTimeout(()=>{
+                                    child.classList.toggle('active')
+                                },200)
+                            }
+                        })
+                    }
+                })
+            
+            
     }
     
     componentDidMount(){
@@ -65,6 +77,7 @@ class Drumpads extends Component {
             return <Drumpad 
                         key={key}
                         value={key}
+                        isDisabled={this.props.isOnOff}
                         sound={currentBulk[i]}
                         uniqueId={id}
                         handleTrigger={this.handleTrigger}

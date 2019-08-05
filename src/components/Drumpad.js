@@ -10,6 +10,7 @@ const Drumpad = (props) => {
             <button
                 onClick={(e) => props.handleTrigger(e, props.value, props.uniqueId)}
                 className="drum-pad"
+                disabled ={!props.isDisabled}
                 id={props.uniqueId}>
                 {props.value}
                 <audio id={props.value} 

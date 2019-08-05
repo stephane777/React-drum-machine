@@ -58,7 +58,7 @@ class App extends Component {
             
             return {
                 isSwitchBankChecked: !currentState.isSwitchBankChecked,
-                display: currentState.display ==="Bank1" ? "Bank2" :"Bank1",
+                display: !currentState.isSwitchBankChecked ? "Bank2" :"Bank1",
             }
         })
     }

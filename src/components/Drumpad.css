@@ -8,4 +8,17 @@
     outline: none;
     background: rgb(182, 182, 182);
     font-weight: bold;
+    box-shadow: 10px 5px 10px 3px rgba(119, 119, 119,.8);
+}
+
+.drum-pad:active {
+    background:rgb(255, 212, 118);
+    transform: translate(3px,3px);
+    box-shadow: 3px 2px 5px rgba(119, 119, 119,.8);
+}
+
+.active {
+    background:rgb(255, 212, 118);
+    transform: translate(3px,3px);
+    box-shadow: 3px 2px 5px rgba(119, 119, 119,.8);
 }

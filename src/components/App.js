@@ -49,6 +49,7 @@ class App extends Component {
         this.setState(currentState => {
             return {
                 isOnOff: !currentState.isOnOff,
+                display: currentState.isOnOff ? '' : 'Bank1',
             }
         })
     }
@@ -74,6 +75,10 @@ class App extends Component {
                         handleTogglePower={this.handleTogglePower}
                     />
                     <div id='controller'>
+                        <div id='fcc_icon'>
+                            <i className="fab fa-free-code-camp"></i>
+                            <b><em>&nbsp;Drum machine</em></b>
+                        </div>
                         <Power handleTogglePower={this.handleTogglePower}
                                isOnOff={this.state.isOnOff}
                         />

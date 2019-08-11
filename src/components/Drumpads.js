@@ -71,7 +71,7 @@ class Drumpads extends Component {
         const keyAndFilename = this.keyAndFilename();
         this.keyDownEvent(keyAndFilename);
     }
-
+    // in componentDidunmount remove listener
     render() {
 
         const pads = this.keys.map((key, i) => {

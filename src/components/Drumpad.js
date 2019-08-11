@@ -10,12 +10,12 @@ const Drumpad = (props) => {
             <button
                 onClick={(e) => props.handleTrigger(e, props.value, props.uniqueId)}
                 className="drum-pad"
-                disabled ={!props.isDisabled}
+                disabled={!props.isDisabled}
                 id={props.uniqueId}>
                 {props.value}
-                <audio id={props.value} 
-                        className='clip'
-                     src={props.sound} type="audio/wav">
+                <audio id={props.value}
+                    className='clip'
+                    src={props.sound} type="audio/wav">
                 </audio>
             </button>
 

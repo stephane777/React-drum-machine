@@ -7,7 +7,7 @@ import SwitchBulk from './SwitchBulk'
 
 const context1 = require.context('../sounds/bulk1', false, /\.wav$/)
 const context2 = require.context('../sounds/bulk2', false, /\.wav$/)
-const context3 = require.context('../sounds/bulk3', false, /\.wav$/)
+
 const bulk1 = context1.keys().map(file => {
     // console.log(file);
     return require(`../sounds/bulk1/${file.replace(/\.\//, '')}`);
@@ -31,11 +31,11 @@ class App extends Component {
             display: 'Bank1',
             isOnOff: true
         }
-        this.handleCurrentSong = this.handleCurrentSong.bind(this)
+        // this.handleCurrentSong = this.handleCurrentSong.bind(this)
         this.handleTogglePower = this.handleTogglePower.bind(this)
         this.handleSwitchBank = this.handleSwitchBank.bind(this)
     }
-    handleCurrentSong(currentSong) {
+    handleCurrentSong = (currentSong) => {
         this.setState((currentState) => {
             if (currentState.display !== display) {
                 return {

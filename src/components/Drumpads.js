@@ -17,6 +17,7 @@ class Drumpads extends Component {
         this.handleTrigger = this.handleTrigger.bind(this)
         this.keyDownEvent = this.keyDownEvent.bind(this)
         this.keyAndFilename = this.keyAndFilename.bind(this)
+        this.handleKeyDown = this.handleKeyDown.bind(this)
         // this.handleCurrentSong = this.props.handleCurrentSong.bind(this)
     }
 
@@ -41,32 +42,31 @@ class Drumpads extends Component {
         return keyAndFilename
     }
 
-
-    keyDownEvent(obj) {
-        document.addEventListener('keydown', event => {
-            if (this.props.isOnOff) {
-                const char = String.fromCharCode(event.keyCode)
-                // const indexCurrentSong = obj.findIndex(el=> Object.keys(el)[0] === char)
-                if (this.keys.indexOf(char) > -1) {
-                    // this.handleTrigger(event, char,obj[indexCurrentSong][char])
-                    const pads = document.getElementById('pads')
-                    pads.childNodes.forEach(child => {
-                        if (child.innerText === char) {
-                            child.click()
+    handleKeyDown(event){
+        if (this.props.isOnOff) {
+            const char = String.fromCharCode(event.keyCode)
+            // const indexCurrentSong = obj.findIndex(el=> Object.keys(el)[0] === char)
+            if (this.keys.indexOf(char) > -1) {
+                // this.handleTrigger(event, char,obj[indexCurrentSong][char])
+                const pads = document.getElementById('pads')
+                pads.childNodes.forEach(child => {
+                    if (child.innerText === char) {
+                        child.click()
+                        child.classList.toggle('active')
+                        setTimeout(() => {
                             child.classList.toggle('active')
-                            setTimeout(() => {
-                                child.classList.toggle('active')
-                            }, 200)
-                        }
-                    })
-                }
+                        }, 200)
+                    }
+                })
             }
-
-        })
-
-
+        }
     }
-
+    keyDownEvent(obj) {
+        document.addEventListener('keydown', this.handleKeyDown)
+    }
+    componentWillUnmount(){
+        document.removeEventListener('keydown', this.handleKeyDown)
+    }
     componentDidMount() {
         const keyAndFilename = this.keyAndFilename();
         this.keyDownEvent(keyAndFilename);
@@ -90,16 +90,6 @@ class Drumpads extends Component {
         return (
             <div id='container'>
                 <div id="pads">{pads}</div>
-                {/* <div id='controller'>
-                    <Power handleTogglePower={this.props.handleTogglePower}
-                           isOnOff={this.props.isOnOff}
-                    />
-                    <CurrentSong 
-                          currentSong={this.props.currentSong}
-                    />
-                    <SwitchBulk />
-                    
-                </div> */}
             </div>
 
         )
